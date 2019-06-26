@@ -14,7 +14,11 @@
     if($message == "Help"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "สวัสดีครับติดต่อพ่อค้าเหรียญแมวโดยตรงได้ที่ Line Id : Slicksixter.'<br>'พิมพ์สัญญาลักษณ์ดังต่อไปนี้เพื่อเลือกเมนู.'<br>'1.TP เพื่อตรวจเช็คเรทการเติมเงิน.'<br>'2.DT เพื่อตรวจสอบรายละเอียดเหรียญแมวที่ได้รับในแพ็คใหญ่.'<br>'3.Pro เพื่อตรวจสอบโปรโมชั่นประจำเดือน";
+        $arrayPostData['messages'][0]['text'] = "สวัสดีครับติดต่อพ่อค้าเหรียญแมวโดยตรงได้ที่ Line Id : Slicksixter
+		.'<br/>'.พิมพ์สัญญาลักษณ์ดังต่อไปนี้เพื่อเลือกเมนู
+		.'<br/>'.1.TP เพื่อตรวจเช็คเรทการเติมเงิน
+		.'<br/>'.2.DT เพื่อตรวจสอบรายละเอียดเหรียญแมวที่ได้รับในแพ็คใหญ่
+		.'<br/>'.3.Pro เพื่อตรวจสอบโปรโมชั่นประจำเดือน";
         replyMsg($arrayHeader,$arrayPostData);
     }
 	if($message == "Pro"){
