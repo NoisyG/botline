@@ -10,14 +10,13 @@
 
 //รับข้อความจากผู้ใช้
 	$message = $arrayJson['events'][0]['message']['text'];
-//รับ id ว่ามาจากไหน
-   if(isset($arrayJson['events'][0]['source']['userId'])){
+  	if(isset($arrayJson['events'][0]['source']['userId'])){
       $id = $arrayJson['events'][0]['source']['userId'];
    }
-   else if(isset($arrayJson['events'][0]['source']['groupId'])){
+   	else if(isset($arrayJson['events'][0]['source']['groupId'])){
       $id = $arrayJson['events'][0]['source']['groupId'];
    }
-   else if(isset($arrayJson['events'][0]['source']['room'])){
+   	else if(isset($arrayJson['events'][0]['source']['room'])){
       $id = $arrayJson['events'][0]['source']['room'];
    }
     if($message == "พ่อค้า"){
@@ -29,7 +28,7 @@
 		ถ้าหากต้องการให้ข้อความอัตโนมัตินี้หยุดทำงานให้พิมพ์ StopSell ได้เลยครับ";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "StopSell"){
+    if($message == "StopSell"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 		$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
@@ -37,7 +36,7 @@
 		หากต้องการเรียกใช้ผมอีกครั้งให้พิมพ์ พ่อค้า นะครับ บ๊ายบาย...";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "HelpS"){
+    if($message == "HelpS"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 		$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
@@ -48,7 +47,7 @@
 		3.Pro เพื่อตรวจสอบโปรโมชั่นประจำเดือน";
         replyMsg($arrayHeader,$arrayPostData);
     }
-	else if($message == "Pro"){
+	if($message == "Pro"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 		$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
@@ -65,7 +64,7 @@
 ▶️▶️ กรณีแพ็คภายในเกมยังมี x2 อยู่ ท่านจะได้รับในส่วนของ x2 ในแพ็คนั้นๆ ด้วย";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "TP"){
+    if($message == "TP"){
         $image_url = "https://sv1.picz.in.th/images/2019/06/27/1C4Oqv.jpg";
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 		$arrayPostData['to'] = $id;
@@ -74,7 +73,7 @@
         $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
         replyMsg($arrayHeader,$arrayPostData);
     }
-    else if($message == "DT"){
+    if($message == "DT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 		$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
