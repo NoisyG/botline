@@ -69,7 +69,7 @@
     //}
     #ตัวอย่าง Message Type "Image"
     else if($message == "TP"){
-        $image_url = "http://image.free.in.th/v/2013/id/190626113939.jpg";
+        $image_url = "https://sv1.picz.in.th/images/2019/06/27/1C4Oqv.jpg";
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "image";
         $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
