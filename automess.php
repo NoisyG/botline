@@ -44,11 +44,11 @@
     else if($message == "รายละเอียด"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-		$arrayPostData['messages'][0]['text'] = "แพ็ค 1,989 บาท ได้รับเหรียญแมว 298+30+30+30+12";
-        $arrayPostData['messages'][0]['text'] = "แพ็ค 2,979 บาท ได้รับเหรียญแมว 598+2";
-		$arrayPostData['messages'][0]['text'] = "แพ็ค 4,889 บาท ได้รับเหรียญแมว 598+298+30+30+30+14";
-		$arrayPostData['messages'][0]['text'] = "แพ็ค 6,740 บาท ได้รับเหรียญแมว 598+598+298+30+30+30+14";
-		$arrayPostData['messages'][0]['text'] = "รายละเอียดแพ็คเกจดังกล่าวยังไม่รวมโบนัสพิเศษภายในเกม";
+		$arrayPostData['messages'][1]['text'] = "แพ็ค 1,989 บาท ได้รับเหรียญแมว 298+30+30+30+12";
+        $arrayPostData['messages'][2]['text'] = "แพ็ค 2,979 บาท ได้รับเหรียญแมว 598+2";
+		$arrayPostData['messages'][3]['text'] = "แพ็ค 4,889 บาท ได้รับเหรียญแมว 598+298+30+30+30+14";
+		$arrayPostData['messages'][4]['text'] = "แพ็ค 6,740 บาท ได้รับเหรียญแมว 598+598+298+30+30+30+14";
+		$arrayPostData['messages'][5]['text'] = "รายละเอียดแพ็คเกจดังกล่าวยังไม่รวมโบนัสพิเศษภายในเกม";
         replyMsg($arrayHeader,$arrayPostData);
     }
 function replyMsg($arrayHeader,$arrayPostData){
