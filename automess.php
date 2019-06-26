@@ -9,7 +9,7 @@
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
 //รับข้อความจากผู้ใช้
-	$message = $arrayJson['events'][0]['source']['userId']['groupId']['room']['message']['text'];
+	$message = $arrayJson['events'][0]['message']['text'];
 //รับ id ว่ามาจากไหน
    if(isset($arrayJson['events'][0]['source']['userId'])){
       $id = $arrayJson['events'][0]['source']['userId'];
@@ -65,15 +65,6 @@
 ▶️▶️ กรณีแพ็คภายในเกมยังมี x2 อยู่ ท่านจะได้รับในส่วนของ x2 ในแพ็คนั้นๆ ด้วย";
         replyMsg($arrayHeader,$arrayPostData);
     }
-    #ตัวอย่าง Message Type "Sticker"
-    //else if($message == "ฝันดี"){
-      //  $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        //$arrayPostData['messages'][0]['type'] = "sticker";
-       // $arrayPostData['messages'][0]['packageId'] = "2";
-       // $arrayPostData['messages'][0]['stickerId'] = "46";
-        //replyMsg($arrayHeader,$arrayPostData);
-    //}
-    #ตัวอย่าง Message Type "Image"
     else if($message == "TP"){
         $image_url = "https://sv1.picz.in.th/images/2019/06/27/1C4Oqv.jpg";
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
@@ -83,7 +74,6 @@
         $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
         replyMsg($arrayHeader,$arrayPostData);
     }
-    #ตัวอย่าง Message Type "Location"
     else if($message == "DT"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 		$arrayPostData['to'] = $id;
