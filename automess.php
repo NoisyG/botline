@@ -7,11 +7,10 @@
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-    
-    //รับข้อความจากผู้ใช้
 
-	$message = $arrayJson['events'][0]['message']['text'];
-#ตัวอย่าง Message Type "Text"
+//รับข้อความจากผู้ใช้
+	$message = $arrayJson['events'][0]['source']['userId']['groupId']['room']['message']['text'];
+//รับ id ว่ามาจากไหน
     if($message == "พ่อค้า"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
@@ -20,20 +19,14 @@
 		ถ้าหากต้องการให้ข้อความอัตโนมัตินี้หยุดทำงานให้พิมพ์ StopSell ได้เลยครับ";
         replyMsg($arrayHeader,$arrayPostData);
     }
-
-	$message = $arrayJson['events'][0]['message']['text'];
-#ตัวอย่าง Message Type "Text"
-    if($message == "StopSell"){
+    else if($message == "StopSell"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "คร๊าบผม...จะพยายามอยู่อย่างเงียบๆ นะครับ
 		หากต้องการเรียกใช้ผมอีกครั้งให้พิมพ์ พ่อค้า นะครับ บ๊ายบาย...";
         replyMsg($arrayHeader,$arrayPostData);
     }
-
-    $message = $arrayJson['events'][0]['message']['text'];
-#ตัวอย่าง Message Type "Text"
-    if($message == "HelpS"){
+    else if($message == "HelpS"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีครับติดต่อพ่อค้าเหรียญแมวโดยตรงได้ที่ Line Id : Slicksixter
@@ -43,7 +36,7 @@
 		3.Pro เพื่อตรวจสอบโปรโมชั่นประจำเดือน";
         replyMsg($arrayHeader,$arrayPostData);
     }
-	if($message == "Pro"){
+	else if($message == "Pro"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "📣📣 ประกาศ !! สำหรับผู้ที่เติมตรงกับวันเกิดของตัวเอง 📣📣.'<br>'
@@ -91,18 +84,18 @@
 		👉 👉 รายละเอียดแพ็คเกจดังกล่าวยังไม่รวมโบนัสพิเศษภายในเกม";
         replyMsg($arrayHeader,$arrayPostData);
     }
-function replyMsg($arrayHeader,$arrayPostData){
-        $strUrl = "https://api.line.me/v2/bot/message/reply";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$strUrl);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);    
-        curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($arrayPostData));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $result = curl_exec($ch);
-        curl_close ($ch);
-    }
-   exit;
+function pushMsg($arrayHeader,$arrayPostData){
+      $strUrl = "https://api.line.me/v2/bot/message/push";
+$ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL,$strUrl);
+      curl_setopt($ch, CURLOPT_HEADER, false);
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPostData));
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      $result = curl_exec($ch);
+      curl_close ($ch);
+   }
+exit;
 ?>
