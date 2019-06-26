@@ -11,6 +11,15 @@
 //รับข้อความจากผู้ใช้
 	$message = $arrayJson['events'][0]['source']['userId']['groupId']['room']['message']['text'];
 //รับ id ว่ามาจากไหน
+   if(isset($arrayJson['events'][0]['source']['userId']){
+      $id = $arrayJson['events'][0]['source']['userId'];
+   }
+   else if(isset($arrayJson['events'][0]['source']['groupId'])){
+      $id = $arrayJson['events'][0]['source']['groupId'];
+   }
+   else if(isset($arrayJson['events'][0]['source']['room'])){
+      $id = $arrayJson['events'][0]['source']['room'];
+   }
     if($message == "พ่อค้า"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
