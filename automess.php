@@ -20,7 +20,7 @@
      $id = $arrayJson['events'][0]['source']['room'];
   }
     else if($message == "พ่อค้า"){
-        $arrayPostData['events'] = $id;
+        $arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีครับติดต่อพ่อค้าเหรียญแมวโดยตรงได้ที่ Line Id : Slicksixter
 		พิมพ์ HelpS เพื่อเรียกดูเมนูได้เลยครับ
@@ -29,7 +29,7 @@
     }
     else if($message == "StopSell"){
         //$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-        $arrayPostData['events'] = $id;
+        $arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "คร๊าบผม...จะพยายามอยู่อย่างเงียบๆ นะครับ
 		หากต้องการเรียกใช้ผมอีกครั้งให้พิมพ์ พ่อค้า นะครับ บ๊ายบาย...";
@@ -37,7 +37,7 @@
     }
     else if($message == "HelpS"){
         //$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-	$arrayPostData['events'] = $id;
+	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีครับติดต่อพ่อค้าเหรียญแมวโดยตรงได้ที่ Line Id : Slicksixter
 		พิมพ์ข้อความดังต่อไปนี้เพื่อเลือกเมนูที่ต้องการ
@@ -48,7 +48,7 @@
     }
 	else if($message == "Pro"){
         //$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-	$arrayPostData['events'] = $id;
+	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "📣📣 ประกาศ !! สำหรับผู้ที่เติมตรงกับวันเกิดของตัวเอง 📣📣.'<br>'
 
@@ -66,7 +66,7 @@
     else if($message == "TP"){
         $image_url = "https://sv1.picz.in.th/images/2019/06/27/1C4Oqv.jpg";
         //$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-	$arrayPostData['events'] = $id;
+	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "image";
         $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
         $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
@@ -74,7 +74,7 @@
     }
     else if($message == "DT"){
         //$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-	$arrayPostData['events'] = $id;
+	$arrayPostData['to'] = $id;
         $arrayPostData['messages'][0]['type'] = "text";
 	$arrayPostData['messages'][0]['text'] = "👉 แพ็ค 1,989 บาท ได้รับเหรียญแมว 298+30+30+30+12
 		
@@ -87,7 +87,6 @@
 		👉 👉 รายละเอียดแพ็คเกจดังกล่าวยังไม่รวมโบนัสพิเศษภายในเกม";
         replyMsg($arrayHeader,$arrayPostData);
     }
-
 function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
